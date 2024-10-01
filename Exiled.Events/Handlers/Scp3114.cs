@@ -19,6 +19,11 @@ namespace Exiled.Events.Handlers
     public static class Scp3114
     {
         /// <summary>
+        /// Invoked after SCP-3114 slaped.
+        /// </summary>
+        public static Event<SlapedEventArgs> Slaped { get; set; } = new();
+
+        /// <summary>
         /// Invoked before disguising.
         /// </summary>
         public static Event<DisguisingEventArgs> Disguising { get; set; } = new();
@@ -47,6 +52,12 @@ namespace Exiled.Events.Handlers
         /// Invoked before sending any SCP-3114 voicelines.
         /// </summary>
         public static Event<VoiceLinesEventArgs> VoiceLines { get; set; } = new();
+
+        /// <summary>
+        /// Called after slaping.
+        /// </summary>
+        /// <param name="ev">The <see cref="SlapedEventArgs"/> instance.</param>
+        public static void OnSlaped(SlapedEventArgs ev) => Slaped.InvokeSafely(ev);
 
         /// <summary>
         /// Called before diguising.

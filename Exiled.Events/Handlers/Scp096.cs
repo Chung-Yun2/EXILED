@@ -38,9 +38,19 @@ namespace Exiled.Events.Handlers
         public static Event<StartPryingGateEventArgs> StartPryingGate { get; set; } = new();
 
         /// <summary>
+        /// Invoked after SCP-096 trigger attack ability.
+        /// </summary>
+        public static Event<AttackedEventArgs> Attacked { get; set; } = new();
+
+        /// <summary>
         /// Invoked before SCP-096 begins charging.
         /// </summary>
         public static Event<ChargingEventArgs> Charging { get; set; } = new();
+
+        /// <summary>
+        /// Invoked when SCP-096 charges.
+        /// </summary>
+        public static Event<UpdateChargingEventArgs> UpdateCharging { get; set; } = new();
 
         /// <summary>
         /// Invoked before SCP-096 tries not to cry.
@@ -72,10 +82,22 @@ namespace Exiled.Events.Handlers
         public static void OnStartPryingGate(StartPryingGateEventArgs ev) => StartPryingGate.InvokeSafely(ev);
 
         /// <summary>
+        /// Called after SCP-096 attacked.
+        /// </summary>
+        /// <param name="ev">The <see cref="AttackedEventArgs"/> instance.</param>
+        public static void OnAttacked(AttackedEventArgs ev) => Attacked.InvokeSafely(ev);
+
+        /// <summary>
         /// Called before SCP-096 begins charging.
         /// </summary>
         /// <param name="ev">The <see cref="ChargingEventArgs" /> instance.</param>
         public static void OnCharging(ChargingEventArgs ev) => Charging.InvokeSafely(ev);
+
+        /// <summary>
+        /// Called when SCP-096 charges.
+        /// </summary>
+        /// <param name="ev">The <see cref="UpdateChargingEventArgs"/> instance.</param>
+        public static void OnUpdateCharging(UpdateChargingEventArgs ev) => UpdateCharging.InvokeSafely(ev);
 
         /// <summary>
         /// Called before SCP-096 starts trying not to cry.
