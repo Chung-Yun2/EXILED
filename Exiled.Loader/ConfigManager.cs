@@ -42,7 +42,7 @@ namespace Exiled.Loader
 
                 foreach (IPlugin<IConfig> plugin in Loader.Plugins)
                 {
-                    deserializedConfigs.Add(plugin.Prefix, plugin.LoadConfig(rawDeserializedConfigs));
+                    deserializedConfigs.Add(plugin.Prefix.Replace("debug", string.Empty), plugin.LoadConfig(rawDeserializedConfigs));
                 }
 
                 // Make sure that no keys in the config file were discarded. (Individual can ignore this since rawDeserializedConfigs is null)
