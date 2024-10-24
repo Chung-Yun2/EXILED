@@ -8,6 +8,7 @@
 namespace Exiled.Loader
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.IO;
 
@@ -84,10 +85,35 @@ namespace Exiled.Loader
         public string[] ExcludeAssemblies { get; set; } = Array.Empty<string>();
 
         /// <summary>
+        /// Gets or sets ports of servers modes.
+        /// </summary>
+        [Description("Ports of servers modes.")]
+        public Dictionary<string, List<ushort>> ServersModes { get; set; } = new()
+        {
+            {
+                "Hub",
+                new()
+                {
+                    7777,
+                }
+            },
+            {
+                "roguelike", new()
+                {
+                    7778,
+                    7779,
+                    7780,
+                    7781,
+                    7782,
+                }
+            },
+        };
+
+        /// <summary>
         /// Gets or sets a value indicating whether Exiled should auto-update itself as soon as a new release is available.
         /// </summary>
         [Description("Indicates whether Exiled should auto-update itself as soon as a new release is available.")]
-        public bool EnableAutoUpdates { get; set; } = true;
+        public bool EnableAutoUpdates { get; set; } = false;
 
         /// <summary>
         /// Gets or sets a value indicating whether the Exiled plugins will load.

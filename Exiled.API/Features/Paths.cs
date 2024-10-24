@@ -106,13 +106,8 @@ namespace Exiled.API.Features
             Dependencies = Path.Combine(Plugins, "dependencies");
             Configs = Path.Combine(Exiled, "Configs");
             IndividualConfigs = Path.Combine(Configs, "Plugins");
-            LoaderConfig = PluginAPI.Loader.AssemblyLoader.InstalledPlugins.FirstOrDefault(x => x.PluginName == "Exiled Loader")?.MainConfigPath;
-            Config = Path.Combine(Configs, $"{Server.Port}-config.yml");
-            BackupConfig = Path.Combine(Configs, $"{Server.Port}-config.yml.old");
             IndividualTranslations = Path.Combine(Configs, "Translations");
-            Translations = Path.Combine(Configs, $"{Server.Port}-translations.yml");
-            BackupTranslations = Path.Combine(Configs, $"{Server.Port}-translations.yml.old");
-            Log = Path.Combine(Exiled, $"{Server.Port}-RemoteAdminLog.txt");
+            LoaderConfig = PluginAPI.Loader.AssemblyLoader.InstalledPlugins.FirstOrDefault(x => x.PluginName == "Exiled Loader")?.MainConfigPath;
         }
 
         /// <summary>

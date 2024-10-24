@@ -32,7 +32,7 @@ namespace Exiled.API.Features
         {
             Assembly = Assembly.GetCallingAssembly();
             Name = Assembly.GetName().Name;
-            Prefix = Name.ToSnakeCase();
+            Prefix = Name.ToSnakeCase().Replace("debug", string.Empty);
             Author = Assembly.GetCustomAttribute<AssemblyCompanyAttribute>()?.Company;
             Version = Assembly.GetName().Version;
         }

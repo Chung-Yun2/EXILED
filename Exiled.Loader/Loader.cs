@@ -23,6 +23,7 @@ namespace Exiled.Loader
     using CommandSystem.Commands.Shared;
 
     using Exiled.API.Features;
+    using Exiled.Permissions;
     using Features;
     using Features.Configs;
     using Features.Configs.CustomConverters;
@@ -403,6 +404,14 @@ namespace Exiled.Loader
 
             LoadDependencies();
             LoadPlugins();
+
+            string serverMode = LoaderPlugin.Config.ServersModes.FirstOrDefault(x => x.Value.Contains(Server.Port)).Key;
+
+            Paths.Config = Path.Combine(Paths.Configs, $"{serverMode}-config.yml");
+            Paths.BackupConfig = Path.Combine(Paths.Configs, $"{serverMode}-config.yml.old");
+            Paths.Translations = Path.Combine(Paths.Configs, $"{serverMode}-translations.yml");
+            Paths.BackupTranslations = Path.Combine(Paths.Configs, $"{serverMode}-translations.yml.old");
+            Paths.Log = Path.Combine(Paths.Exiled, $"{serverMode}-RemoteAdminLog.txt");
 
             ConfigManager.Reload();
             TranslationManager.Reload();
